@@ -1,5 +1,6 @@
 import domain.Student;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 import repository.NotaXMLRepo;
 import repository.StudentXMLRepo;
 import repository.TemaXMLRepo;
@@ -16,7 +17,7 @@ public class TestStudent {
 
 
     @Test
-    void addStudent()
+    public void addStudent()
     {
         StudentValidator studentValidator = new StudentValidator();
         TemaValidator temaValidator = new TemaValidator();
@@ -44,7 +45,7 @@ public class TestStudent {
     }
 
     @Test
-    void deleteStudent()
+    public void deleteStudent()
     {
         StudentValidator studentValidator = new StudentValidator();
         TemaValidator temaValidator = new TemaValidator();
