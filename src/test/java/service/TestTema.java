@@ -1,7 +1,7 @@
 package service;
 
 import domain.Tema;
-import org.junit.Test;
+import org.testng.annotations.Test;
 import repository.NotaXMLRepo;
 import repository.StudentXMLRepo;
 import repository.TemaXMLRepo;
@@ -34,7 +34,7 @@ public class TestTema {
 
     }
 
-    @Test(expected = ValidationException.class)
+    @Test(expectedExceptions = ValidationException.class)
     public void addTema2()
     {
         StudentValidator studentValidator = new StudentValidator();
@@ -58,7 +58,7 @@ public class TestTema {
 
 
 
-    @Test(expected=ValidationException.class)
+    @Test(expectedExceptions=ValidationException.class)
     public void addTema3()
     {
         StudentValidator studentValidator = new StudentValidator();
@@ -83,7 +83,7 @@ public class TestTema {
 
     }
 
-    @Test(expected=ValidationException.class)
+    @Test(expectedExceptions=ValidationException.class)
     public void addTema4()
     {
         StudentValidator studentValidator = new StudentValidator();
@@ -109,7 +109,7 @@ public class TestTema {
     }
 
 
-    @Test(expected = ValidationException.class)
+    @Test(expectedExceptions = ValidationException.class)
     public void addTema5()
     {
         StudentValidator studentValidator = new StudentValidator();
