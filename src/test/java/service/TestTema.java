@@ -10,7 +10,6 @@ import validation.StudentValidator;
 import validation.TemaValidator;
 import validation.ValidationException;
 
-import static org.testng.AssertJUnit.*;
 
 public class TestTema {
 
