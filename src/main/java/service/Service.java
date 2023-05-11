@@ -22,15 +22,18 @@ import static java.time.temporal.ChronoUnit.DAYS;
  * Clasa Service
  */
 public class Service {
+
+
     //private StudentFileRepository studentFileRepository;
-    private StudentXMLRepo studentFileRepository;
+    private CrudRepository<String,Student> studentFileRepository;
     private StudentValidator studentValidator;
     //private TemaFileRepository temaFileRepository;
-    private TemaXMLRepo temaFileRepository;
+    private CrudRepository<String,Tema> temaFileRepository;
     private TemaValidator temaValidator;
     //private NotaFileRepository notaFileRepository;
-    private NotaXMLRepo notaFileRepository;
+    private CrudRepository<String,Nota> notaFileRepository;
     private NotaValidator notaValidator;
+
 
     /**
      * Class Constructor
@@ -42,15 +45,28 @@ public class Service {
      * @param notaValidator - validator nota
      */
     //public Service(StudentFileRepository studentFileRepository, StudentValidator studentValidator, TemaFileRepository temaFileRepository, TemaValidator temaValidator, NotaFileRepository notaFileRepository, NotaValidator notaValidator) {
-    public Service(StudentXMLRepo studentFileRepository, StudentValidator studentValidator, TemaXMLRepo temaFileRepository, TemaValidator temaValidator, NotaXMLRepo notaFileRepository, NotaValidator notaValidator) {
 
-        this.studentFileRepository = studentFileRepository;
+    public Service(CrudRepository studentRepository, StudentValidator studentValidator, CrudRepository temaRepository,TemaValidator temaValidator, CrudRepository notaRepository,NotaValidator notaValidator) {
+
+
+        this.studentFileRepository = studentRepository;
         this.studentValidator = studentValidator;
-        this.temaFileRepository = temaFileRepository;
+        this.temaFileRepository = temaRepository;
         this.temaValidator = temaValidator;
-        this.notaFileRepository = notaFileRepository;
+        this.notaFileRepository = notaRepository;
         this.notaValidator = notaValidator;
     }
+
+
+//    public Service(StudentXMLRepo studentFileRepository, StudentValidator studentValidator, TemaXMLRepo temaFileRepository, TemaValidator temaValidator, NotaXMLRepo notaFileRepository) {
+//
+//        this.studentFileRepository = studentFileRepository;
+//        this.studentValidator = studentValidator;
+//        this.temaFileRepository = temaFileRepository;
+//        this.temaValidator = temaValidator;
+//        this.notaFileRepository = notaFileRepository;
+//
+//    }
 
     /**
      * adauga un Student in memorie
@@ -231,7 +247,7 @@ public class Service {
         }
         if(tema.getDeadline() >= diff) {
             tema.setDeadline(deadline);
-            temaFileRepository.writeToFile();
+//            temaFileRepository.writeToFile();
         }
         else{
             throw new ValidationException("Nu se mai poate prelungi deadline-ul!");

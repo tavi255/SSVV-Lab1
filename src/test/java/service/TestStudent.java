@@ -3,9 +3,7 @@ package service;
 import domain.Student;
 
 import org.testng.annotations.Test;
-import repository.NotaXMLRepo;
-import repository.StudentXMLRepo;
-import repository.TemaXMLRepo;
+import repository.*;
 import validation.NotaValidator;
 import validation.StudentValidator;
 import validation.TemaValidator;
@@ -23,9 +21,9 @@ public class TestStudent {
     {
         StudentValidator studentValidator = new StudentValidator();
         TemaValidator temaValidator = new TemaValidator();
-        String filenameStudent = "fisiere/Studenti.xml";
-        String filenameTema = "fisiere/Teme.xml";
-        String filenameNota = "fisiere/Note.xml";
+        String filenameStudent = "fisiere/Studenti_teste.xml";
+        String filenameTema = "fisiere/Teme_teste.xml";
+        String filenameNota = "fisiere/Note_teste.xml";
 
 
 
@@ -53,9 +51,9 @@ public class TestStudent {
     {
         StudentValidator studentValidator = new StudentValidator();
         TemaValidator temaValidator = new TemaValidator();
-        String filenameStudent = "fisiere/Studenti.xml";
-        String filenameTema = "fisiere/Teme.xml";
-        String filenameNota = "fisiere/Note.xml";
+        String filenameStudent = "fisiere/Studenti_teste.xml";
+        String filenameTema = "fisiere/Teme_teste.xml";
+        String filenameNota = "fisiere/Note_teste.xml";
 
 
 
@@ -84,9 +82,10 @@ public class TestStudent {
     {
         StudentValidator studentValidator = new StudentValidator();
         TemaValidator temaValidator = new TemaValidator();
-        String filenameStudent = "fisiere/Studenti.xml";
-        String filenameTema = "fisiere/Teme.xml";
-        String filenameNota = "fisiere/Note.xml";
+        String filenameStudent = "fisiere/Studenti_teste.xml";
+        String filenameTema = "fisiere/Teme_teste.xml";
+        String filenameNota = "fisiere/Note_teste.xml";
+
 
 
 
@@ -110,9 +109,10 @@ public class TestStudent {
     {
         StudentValidator studentValidator = new StudentValidator();
         TemaValidator temaValidator = new TemaValidator();
-        String filenameStudent = "fisiere/Studenti.xml";
-        String filenameTema = "fisiere/Teme.xml";
-        String filenameNota = "fisiere/Note.xml";
+        String filenameStudent = "fisiere/Studenti_teste.xml";
+        String filenameTema = "fisiere/Teme_teste.xml";
+        String filenameNota = "fisiere/Note_teste.xml";
+
 
 
 
@@ -134,9 +134,9 @@ public class TestStudent {
     {
         StudentValidator studentValidator = new StudentValidator();
         TemaValidator temaValidator = new TemaValidator();
-        String filenameStudent = "fisiere/Studenti.xml";
-        String filenameTema = "fisiere/Teme.xml";
-        String filenameNota = "fisiere/Note.xml";
+        String filenameStudent = "fisiere/Studenti_teste.xml";
+        String filenameTema = "fisiere/Teme_teste.xml";
+        String filenameNota = "fisiere/Note_teste.xml";
 
 
 
@@ -160,9 +160,9 @@ public class TestStudent {
     {
         StudentValidator studentValidator = new StudentValidator();
         TemaValidator temaValidator = new TemaValidator();
-        String filenameStudent = "fisiere/Studenti.xml";
-        String filenameTema = "fisiere/Teme.xml";
-        String filenameNota = "fisiere/Note.xml";
+        String filenameStudent = "fisiere/Studenti_teste.xml";
+        String filenameTema = "fisiere/Teme_teste.xml";
+        String filenameNota = "fisiere/Note_teste.xml";
 
 
 
@@ -184,9 +184,10 @@ public class TestStudent {
     {
         StudentValidator studentValidator = new StudentValidator();
         TemaValidator temaValidator = new TemaValidator();
-        String filenameStudent = "fisiere/Studenti.xml";
-        String filenameTema = "fisiere/Teme.xml";
-        String filenameNota = "fisiere/Note.xml";
+        String filenameStudent = "fisiere/Studenti_teste.xml";
+        String filenameTema = "fisiere/Teme_teste.xml";
+        String filenameNota = "fisiere/Note_teste.xml";
+
 
 
 
@@ -207,14 +208,16 @@ public class TestStudent {
 
     }
 
+
+
     @Test
     public void deleteStudent()
     {
         StudentValidator studentValidator = new StudentValidator();
         TemaValidator temaValidator = new TemaValidator();
-        String filenameStudent = "fisiere/Studenti.xml";
-        String filenameTema = "fisiere/Teme.xml";
-        String filenameNota = "fisiere/Note.xml";
+        String filenameStudent = "fisiere/Studenti_teste.xml";
+        String filenameTema = "fisiere/Teme_teste.xml";
+        String filenameNota = "fisiere/Note_teste.xml";
 
 
 
@@ -224,10 +227,20 @@ public class TestStudent {
         NotaXMLRepo notaXMLRepository = new NotaXMLRepo(filenameNota);
         Service service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
 
-        Student s=new Student("43","Luci",937,"luci@gmail.com");
-        Student s2=new Student("44","Richard",937,"richard@gmail.com");
+        Student s=new Student("1","Luci",937,"luci@gmail.com");
+        Student s2=new Student("10000","Richard",937,"richard@gmail.com");
 
-        assertEquals(service.deleteStudent(s.getID()).toString(),new Student("43","Luci",937,"luci@gmail.com").toString());
-        assertEquals(service.deleteStudent(s2.getID()).toString(),new Student("44","Richard",937,"richard@gmail.com").toString());
+        Student s3=new Student("5","Luci",937,"luci@gmail.com");
+        Student s4=new Student("7","Richard",937,"richard@gmail.com");
+
+        Student s5=new Student("43","Luci",937,"luci@gmail.com");
+        Student s6=new Student("44","Richard",937,"richard@gmail.com");
+
+        service.deleteStudent(s.getID());
+        service.deleteStudent(s2.getID());
+        service.deleteStudent(s3.getID());
+        service.deleteStudent(s4.getID());
+        service.deleteStudent(s5.getID());
+        service.deleteStudent(s6.getID());
     }
 }

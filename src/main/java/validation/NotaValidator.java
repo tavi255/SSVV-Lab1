@@ -10,6 +10,9 @@ public class NotaValidator implements Validator<Nota> {
     private StudentXMLRepo studentFileRepository;
     private TemaXMLRepo temaFileRepository;
 
+    private CrudRepository studentRepository;
+    private CrudRepository temaRepository;
+
     /**
      * Class constructor
      * @param studentFileRepository - repository student
@@ -20,6 +23,11 @@ public class NotaValidator implements Validator<Nota> {
         this.temaFileRepository = temaFileRepository;
     }
 
+    public NotaValidator(CrudRepository studentRepository, CrudRepository temaRepository) {
+        this.studentRepository = studentRepository;
+        this.temaRepository = temaRepository;
+    }
+
     /**
      * Valideaza o nota
      * @param nota - nota pe care o valideaza
@@ -28,16 +36,19 @@ public class NotaValidator implements Validator<Nota> {
     @Override
     public void validate(Nota nota) throws ValidationException {
         Student student = studentFileRepository.findOne(nota.getIdStudent());
-        if (student== null){
+        if (student == null) {
             throw new ValidationException("Studentul nu exista!");
         }
         Tema tema = temaFileRepository.findOne(nota.getIdTema());
-        if(tema == null){
+        if (tema == null) {
             throw new ValidationException("Tema nu exista!");
         }
         double notaC = nota.getNota();
-        if(notaC > 10.00 || notaC < 0.00){
+        if (notaC > 10.00 || notaC < 0.00) {
             throw new ValidationException("Valoarea notei nu este corecta!");
         }
+
     }
+
+
 }
